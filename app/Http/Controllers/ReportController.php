@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DailyReport;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
-use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 class ReportController extends Controller
 {
@@ -18,7 +17,7 @@ class ReportController extends Controller
         $data = $request->all();
 
         try {
-            $reports = DailyReport::get_reports();
+            $reports = Report::get_reports();
         } catch (\Exception $e) {
             Log::info("error", ["error" => $e->getMessage()]);
             return $e->getMessage();

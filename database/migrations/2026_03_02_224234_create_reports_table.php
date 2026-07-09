@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('daily_reports', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string("code")->index();
+            $table->integer("type")->default(1)->index(); //si el tipo es 1 es un reporte normal de la frecuencia q se pide (si es 2 es un reporte de emergencia de un altercado q pasa)
+            $table->integer("detail_id")->index();
             $table->date("date")->index();
             $table->timestamps();
         });
