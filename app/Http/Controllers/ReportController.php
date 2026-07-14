@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DailyReport;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
-use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 class ReportController extends Controller
 {
     public function index(){
-        return Inertia::render('Report/index');
+        return Inertia::render('Report/Index');
+    }
+    public function index_last_activities ()
+    {
+        return Inertia::render('LastActivities/Index');
     }
 
     public function get_reports(Request $request){
         $data = $request->all();
 
         try {
-            $reports = DailyReport::get_reports();
+            $reports = Report::get_reports();
         } catch (\Exception $e) {
             Log::info("error", ["error" => $e->getMessage()]);
             return $e->getMessage();

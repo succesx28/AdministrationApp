@@ -1,62 +1,45 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-import { useState } from 'react';
+import {Head} from '@inertiajs/react';
+import {useState} from "react";
 
 export default function Dashboard() {
 
-    const [totalReports] = useState(0);
-    const [totalPendings] = useState(0);
-    const [lastReports] = useState([]);
+    const [pendings] = useState([]);
 
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Panel de control
-                </h2>
+                <div className="flex items-center justify-between">
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                        Pendientes
+                    </h2>
+                    <div className="flex flex-row gap-2">
+                        <button
+                            type="button"
+                            className="rounded-lg bg-green-600 px-4 py-1.5 text-sm font-medium text-white shadow hover:bg-green-700 transition-colors"
+                        >
+                            + Añadir pendiente
+                        </button>
+                        <button
+                            type="button"
+                            className="rounded-lg bg-[#201099] px-4 py-1.5 text-sm font-medium text-white shadow hover:bg-green-700 transition-colors"
+                        >
+                            Subir excel
+                        </button>
+                    </div>
+                </div>
             }
         >
-            <Head title="Panel de control" />
+            <Head title="Panel de control"/>
 
-            <div className="py-6">
-                <div className="mx-auto max-w-7xl px-4">
-
-                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-
-                        {/* Tarjetas */}
-                        <div className="flex flex-col gap-6">
-
-                            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                                <p className="text-sm font-medium text-gray-500">
-                                    Total de reportes
-                                </p>
-
-                                <h3 className="mt-4 text-5xl font-bold text-blue-600">
-                                    {totalReports}
-                                </h3>
-                            </div>
-
-                            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                                <p className="text-sm font-medium text-gray-500">
-                                    Pendientes actuales
-                                </p>
-
-                                <h3 className="mt-4 text-5xl font-bold text-orange-500">
-                                    {totalPendings}
-                                </h3>
-                            </div>
-
-                        </div>
-
+            <div className="py-12">
+                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         {/* Tabla */}
                         <div className="lg:col-span-2">
 
-                            <div className="flex h-[calc(94vh-150px)] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-                                <div className="border-b px-6 py-4">
-                                    <h3 className="text-lg font-semibold text-gray-800">
-                                        Reportes recientes
-                                    </h3>
-                                </div>
+                            <div
+                                className="flex h-[calc(94vh-150px)] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
 
                                 <div className="overflow-x-auto">
 
@@ -73,6 +56,9 @@ export default function Dashboard() {
                                             </th>
 
                                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                                Urgencia
+                                            </th>
+                                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
                                                 Estado
                                             </th>
 
@@ -84,23 +70,27 @@ export default function Dashboard() {
 
                                         <tbody className="divide-y divide-gray-100 bg-white">
 
-                                        {lastReports.length > 0 ? (
-                                            lastReports.map((report) => (
-                                                <tr key={report.id}>
+                                        {pendings.length > 0 ? (
+                                            pendings.map((pending) => (
+                                                <tr key={pending.id}>
                                                     <td className="px-6 py-4">
-                                                        {report.code}
+                                                        {pending.code}
                                                     </td>
 
                                                     <td className="px-6 py-4">
-                                                        {report.title}
+                                                        {pending.title}
                                                     </td>
 
                                                     <td className="px-6 py-4">
-                                                        {report.status}
+                                                        {pending.urgency}
                                                     </td>
 
                                                     <td className="px-6 py-4">
-                                                        {report.created_at}
+                                                        {pending.status}
+                                                    </td>
+
+                                                    <td className="px-6 py-4">
+                                                        {pending.created_at}
                                                     </td>
                                                 </tr>
                                             ))
@@ -110,7 +100,7 @@ export default function Dashboard() {
                                                     colSpan={4}
                                                     className="px-6 py-12 text-center text-gray-500"
                                                 >
-                                                    No hay reportes recientes.
+                                                    No hay pendientes recientes.
                                                 </td>
                                             </tr>
                                         )}
@@ -126,10 +116,8 @@ export default function Dashboard() {
                         </div>
 
                     </div>
-
                 </div>
             </div>
-
         </AuthenticatedLayout>
     );
 }
