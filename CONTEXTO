@@ -7,7 +7,7 @@ tabla de clientes para cambiar el estado en conversacion, pendiente,  proceso, a
 se podrá cambiar cada cosa por eso la tabla de reportes son exclusivamente para ver que se hizo ultimamente
 
 tabla de reportes mensuales, quincenales, semanales ( esto se sacará apartir de los repotes de los clientes y habra una manera de poder generar un reporte de emergencia para saber que se hizo dependiendo de la fecha q le pongas hasta ahorita o la otra fecha que le pongas y te generará un registro con los reportes de las fechas puestas)
-
+tabla de proveedores para hacer seguimiento de las piezas o mercaderia pedida
 
 capacidad de tener multiusuario / roles
 ----Admin hace todo, Gestor (solo revisa reportes y puede crear reporte de emergencia mas no actualiza reportes )

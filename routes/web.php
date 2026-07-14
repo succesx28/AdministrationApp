@@ -26,15 +26,15 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(\App\Http\Controllers\ReportController::class)->group(function () {
-        Route::get('/reports', 'index')->name('reports.index');
+        Route::get('/reports', 'index')->name('reports');
         Route::post('/get-reports', 'get_reports')->name('get_reports');
-        Route::get('/last-activities', 'last_activities')->name('last_activities.index');
+        Route::get('/last-activities', 'index_last_activities')->name('last_activities');
     });
-    Route::controller(UserController::class)->group(function () {
-        Route::get('/members', 'members')->name('members');
+    Route::controller(\App\Http\Controllers\MemberController::class)->group(function () {
+        Route::get('/members', 'index')->name('members');
     });
     Route::controller(\App\Http\Controllers\TaskController::class)->group(function () {
-        Route::get('/pendings', 'index')->name('index.pendings');
+        Route::get('/pendings', 'index')->name('pendings');
     });
 
     Route::middleware('admin')->group(function () {

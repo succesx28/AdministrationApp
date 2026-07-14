@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->string("code")->index();
-            $table->string('title');
-            $table->integer("detail_id")->index();
-            $table->integer("client_id")->index();
-            $table->integer("status")->index();
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('daily_reports');
+        Schema::dropIfExists('suppliers');
     }
 };

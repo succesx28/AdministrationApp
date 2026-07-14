@@ -10,7 +10,11 @@ use Inertia\Inertia;
 class ReportController extends Controller
 {
     public function index(){
-        return Inertia::render('Report/index');
+        return Inertia::render('Report/Index');
+    }
+    public function index_last_activities ()
+    {
+        return Inertia::render('LastActivities/Index');
     }
 
     public function get_reports(Request $request){

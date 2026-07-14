@@ -28,10 +28,10 @@ export default function AuthenticatedLayout({header, children}) {
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
                                 >
-                                    Principal </NavLink>
+                                    Panel de control </NavLink>
                                 <NavLink
-                                    href={route('last-activities')}
-                                    active={route().current('last-activities')}
+                                    href={route('last_activities')}
+                                    active={route().current('last_activities')}
                                 >
                                     Ult. Actividades
                                 </NavLink>

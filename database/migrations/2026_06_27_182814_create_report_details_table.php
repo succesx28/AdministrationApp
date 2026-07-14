@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('report_details', function (Blueprint $table) {
             $table->id();
+            $table->integer("type")->default(1)->index(); //si el tipo es 1 es un reporte normal de la frecuencia q se pide (si es 2 es un reporte de emergencia de un altercado q pasa
+            $table->longText('description'); //AQUI SE PONDRA LA DESCRIPCION DE LO QUE SE HIZO EN EL REPORTE
             $table->timestamps();
         });
     }
